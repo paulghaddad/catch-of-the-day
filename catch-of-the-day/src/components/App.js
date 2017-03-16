@@ -23,7 +23,7 @@ class App extends React.Component {
     const timestamp = Date.now();
     fishes[`fish-${timestamp}`] = fish;
     // set state
-    this.setState({ fishes });
+    this.setState({ fishes }); // In ES6, { fishes } is the same thing as { fish: fishes }
   }
 
   render() {
@@ -33,6 +33,7 @@ class App extends React.Component {
           <Header tagline="Fresh Seafood Market"/>
         </div>
         <Order />
+        // This will pass the addFirst function down to the child component
         <Inventory addFish={this.addFish} />
       </div>
     )
