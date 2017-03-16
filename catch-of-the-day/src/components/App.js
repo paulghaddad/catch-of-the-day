@@ -11,6 +11,7 @@ class App extends React.Component {
 
     this.addFish = this.addFish.bind(this);
     this.loadSamples = this.loadSamples.bind(this);
+    this.addToOrder = this.addToOrder.bind(this);
 
     // getInitialState
     this.state = {
@@ -36,6 +37,22 @@ class App extends React.Component {
     });
   }
 
+  addToOrder(key) {
+    // Take a copy of our state
+    const order = {...this.state.order};
+
+    // Update or add the new number of fish ordered
+    // if the key is undefined, order[key] + 1 will return NaN, so the second
+    // part of the || will return 1
+    order[key] = order[key] + 1 || 1;
+
+    // Update our state
+    this.setState({ order });
+  }
+
+  // In the Fish component below, key is for React, you can't access it. That's
+  // why we're using our own prop, index, to pass along the key.
+
   render() {
     return (
       <div className="catch-of-the-day">
@@ -44,7 +61,7 @@ class App extends React.Component {
           <ul className="list-of-fishes">
             { 
               Object.keys(this.state.fishes)
-                .map(key => <Fish key={key} details={this.state.fishes[key]} />)
+                .map(key => <Fish key={key} index={key} details={this.state.fishes[key]} addToOrder={this.addToOrder} />)
             }
           </ul>
         </div>
