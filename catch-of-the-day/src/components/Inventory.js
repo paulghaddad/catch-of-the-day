@@ -133,15 +133,16 @@ class Inventory extends React.Component {
       </div>
     )
   }
+
+  static propTypes = {
+    fishes: React.PropTypes.object.isRequired,
+    updateFish: React.PropTypes.func.isRequired,
+    removeFish: React.PropTypes.func.isRequired,
+    addFish: React.PropTypes.func.isRequired,
+    loadSamples: React.PropTypes.func.isRequired,
+    storeId: React.PropTypes.string.isRequired
+  }
 }
 
-Inventory.PropTypes = {
-  fishes: React.PropTypes.object.isRequired,
-  updateFish: React.PropTypes.func.isRequired,
-  removeFish: React.PropTypes.func.isRequired,
-  addFish: React.PropTypes.func.isRequired,
-  loadSamples: React.PropTypes.func.isRequired,
-  storeId: React.PropTypes.string.isRequired
-}
 
 export default Inventory;

@@ -11,19 +11,14 @@ class App extends React.Component {
     super();
 
     this.addFish = this.addFish.bind(this);
-    this.updateFish = this.updateFish.bind(this);
-    this.loadSamples = this.loadSamples.bind(this);
     this.addToOrder = this.addToOrder.bind(this);
-    this.removeFish = this.removeFish.bind(this);
     this.removeFromOrder = this.removeFromOrder.bind(this);
-
-
-    // getInitialState
-    this.state = {
-      fishes: {},
-      order: {}
-    };
   }
+
+  state = {
+    fishes: {},
+    order: {}
+  };
 
   componentWillMount() {
     // this runs right before the <App> is rendered
@@ -64,23 +59,23 @@ class App extends React.Component {
     this.setState({ fishes }); // In ES6, { fishes } is the same thing as { fish: fishes }
   }
 
-  updateFish(key, updatedFish) {
+  updateFish = (key, updatedFish) => {
     const fishes = {...this.state.fishes};
     fishes[key] = updatedFish;
     this.setState({ fishes });
-  }
+  };
 
-  removeFish(key) {
+  removeFish = (key) => {
     const fishes = {...this.state.fishes};
     fishes[key] = null;
     this.setState({ fishes });
-  }
+  };
 
-  loadSamples() {
+  loadSamples = () => {
     this.setState({
       fishes: sampleFishes
     });
-  }
+  };
 
   addToOrder(key) {
     // Take a copy of our state
